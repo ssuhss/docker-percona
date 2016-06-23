@@ -1,0 +1,21 @@
+phpmyadmin:
+   image: phpmyadmin/phpmyadmin
+   container_name: phpmyadmin
+   hostname: phpmyadmin
+   ports:
+     - "8080:80"
+   env_file: config.env
+   links:
+     - percona
+percona:
+   image: percona
+   hostname: percona
+   ports:
+     - "3308:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_USER: root
+     MYSQL_PASSWORD: root
+     MYSQL_DATABASE: testing
+
+
